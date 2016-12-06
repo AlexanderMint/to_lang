@@ -55,6 +55,7 @@ module ToLang
     def request(q, target, options = {})
       request_hash = { :key => @key, :q => q, :target => target }
       request_hash[:source] = options[:from] if options[:from]
+      request_hash[:format] = options[:format] if options[:format]
       return request_hash if options[:debug] == :request
 
       response = self.class.post(API_URL, { :body => request_hash })
